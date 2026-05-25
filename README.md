@@ -1,4 +1,4 @@
-# 🏡 Digital Home UI/UX (V2 Upgrade)
+# 🏡 Digital Home 
 
 > A personal productivity PWA built around the metaphor of a house—where each room represents a different life context. Study, work, relax, and collaborate, all in one place that feels like yours. 
 > 
@@ -49,7 +49,7 @@ Digital Home is heavily inspired by Apple's signature hardware and software aest
 
 ## 🔌 Free API Integrations
 
-No private API keys are needed—all integrated systems are completely free and open out-of-the-box:
+No private API keys are needed—all integrated systems are completely free and open out of the box:
 
 *   **Radio Browser**: Drives the internet radio tuner in Study/Work rooms.
 *   **Open-Meteo**: Syncs your local weather to dynamically affect room lighting and window views.
