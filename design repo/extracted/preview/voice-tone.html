@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voice & tone</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .col-h {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 8px;
+  }
+  .col-h.bad { color: #e07070; }
+  .col-h.good { color: #c4a882; }
+  .lines { display: flex; flex-direction: column; gap: 8px; }
+  .line {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .line.bad { color: var(--fg-muted); text-decoration: line-through; text-decoration-color: rgba(224,80,80,0.5); }
+  .line.good { color: var(--fg); border-color: rgba(196,168,130,0.32); }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div>
+    <p class="col-h bad">Don't</p>
+    <div class="lines">
+      <div class="line bad">Sign in</div>
+      <div class="line bad">Log out</div>
+      <div class="line bad">Add New Task</div>
+      <div class="line bad">Hello, user.</div>
+      <div class="line bad">0 tasks</div>
+    </div>
+  </div>
+  <div>
+    <p class="col-h good">Do</p>
+    <div class="lines">
+      <div class="line good">Enter my home</div>
+      <div class="line good">Leave home</div>
+      <div class="line good">Add a task…</div>
+      <div class="line good">Welcome back, Hadron ✨</div>
+      <div class="line good">3 remaining</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

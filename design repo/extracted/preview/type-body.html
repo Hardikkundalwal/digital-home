@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Body & support type</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 32px; }
+  .row-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .row-item:last-child { border-bottom: none; }
+  .label { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="row-item">
+    <span class="label">Body</span>
+    <span class="dh-body">A quiet room of one's own, on every device you own.</span>
+  </div>
+  <div class="row-item">
+    <span class="label">Body sm</span>
+    <span class="dh-body-sm">Personal tasks and notes</span>
+  </div>
+  <div class="row-item">
+    <span class="label">Caption</span>
+    <span class="dh-caption">3 remaining · updated just now</span>
+  </div>
+  <div class="row-item">
+    <span class="label">Overline</span>
+    <span class="dh-overline">Currently playing</span>
+  </div>
+  <div class="row-item">
+    <span class="label">Mono</span>
+    <span class="dh-mono">OUR-X7K2</span>
+  </div>
+  <div class="row-item">
+    <span class="label">Quote</span>
+    <span class="dh-quote">"The home should be the treasure chest of living."</span>
+  </div>
+</div>
+</body>
+</html>

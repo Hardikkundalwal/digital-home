@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elevation</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 36px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .e {
+    background: var(--surface);
+    border: var(--card-hairline);
+    border-radius: 16px;
+    height: 110px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 14px 16px;
+    gap: 4px;
+  }
+  .name { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
+  .desc { font-size: 11px; color: var(--fg-muted); line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="e" style="box-shadow: var(--shadow-1);">
+    <span class="name">shadow-1</span>
+    <span class="desc">Resting card</span>
+  </div>
+  <div class="e" style="box-shadow: var(--shadow-2);">
+    <span class="name">shadow-2</span>
+    <span class="desc">Hover · lifted card</span>
+  </div>
+  <div class="e" style="box-shadow: var(--shadow-sheet); border-radius: 24px 24px 16px 16px;">
+    <span class="name">shadow-sheet</span>
+    <span class="desc">Bottom sheet</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+/* ============================================================
+   Digital Home — Tokens
+   Warm, Apple-inspired. Dark is the primary surface.
+   ============================================================ */
+
+:root {
+  /* ── Brand palette ─────────────────────────────────────── */
+  --dh-charcoal-900: #1a1a1a;   /* primary bg, dark mode */
+  --dh-charcoal-800: #242424;   /* surface / cards, dark */
+  --dh-charcoal-700: #2b2b2b;   /* alt surface, also light text */
+  --dh-charcoal-600: #333333;   /* border, dark */
+  --dh-charcoal-500: #3d3d3d;   /* divider, dark */
+
+  --dh-gold-500: #c4a882;       /* accent — dark mode */
+  --dh-gold-600: #b8986e;       /* gold pressed */
+  --dh-gold-700: #8b6f47;       /* accent — light mode */
+  --dh-gold-800: #7a5f3c;       /* gold hover, light */
+  --dh-gold-900: #5a4a3a;       /* deep warm shadow */
+  --dh-gold-100: #d4c8b5;
+  --dh-gold-50:  #e5dcc8;       /* border, light */
+
+  --dh-cream-50: #f5efe6;       /* bg — light mode */
+  --dh-cream-100: #ede4d4;
+  --dh-cream-0:  #ffffff;       /* surface — light mode */
+
+  --dh-text-warm: #f5f0e8;      /* primary text on dark */
+  --dh-text-muted-dark: #8a7f6e;
+  --dh-text-muted-light: #8a7f6e;
+
+  /* room accents */
+  --dh-study: #7a9e6b;
+  --dh-work:  #6b8f9e;
+  --dh-personal: #c4a882;       /* my-room shares gold */
+
+  /* ── Semantic (DARK MODE default) ──────────────────────── */
+  --bg:           var(--dh-charcoal-900);
+  --bg-elevated:  var(--dh-charcoal-800);
+  --surface:      var(--dh-charcoal-800);
+  --surface-2:    var(--dh-charcoal-700);
+  --border:       var(--dh-charcoal-600);
+  --divider:      var(--dh-charcoal-500);
+  --fg:           var(--dh-text-warm);
+  --fg-muted:     var(--dh-text-muted-dark);
+  --accent:       var(--dh-gold-500);
+  --accent-hover: var(--dh-gold-600);
+  --accent-ink:   #1a1a1a;        /* text on accent fill */
+
+  --signal-error:   #e05050;
+  --signal-warn:    #f59e0b;
+  --signal-success: #22c55e;
+
+  /* ── Type ──────────────────────────────────────────────── */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+               system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+  /* sizes — generous, Apple-ish */
+  --fs-12: 0.75rem;
+  --fs-13: 0.8125rem;
+  --fs-14: 0.875rem;
+  --fs-15: 0.9375rem;
+  --fs-16: 1rem;       /* body */
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-28: 1.75rem;
+  --fs-32: 2rem;
+  --fs-40: 2.5rem;
+  --fs-48: 3rem;
+
+  --lh-tight: 1.15;
+  --lh-snug:  1.3;
+  --lh-base:  1.5;
+  --lh-loose: 1.65;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* tracking — warm display ever so slightly tight */
+  --tracking-display: -0.02em;
+  --tracking-tight:   -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-mono:    0.06em;
+
+  /* ── Spacing — generous ────────────────────────────────── */
+  --sp-0:  0;
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-7:  32px;
+  --sp-8:  40px;
+  --sp-9:  56px;
+  --sp-10: 72px;
+
+  /* ── Radii ─────────────────────────────────────────────── */
+  --r-sm:  8px;       /* inputs, small chips */
+  --r-md:  12px;
+  --r-lg:  16px;      /* cards */
+  --r-xl:  20px;      /* tour modal */
+  --r-2xl: 24px;      /* sheet top corners */
+  --r-pill: 999px;
+
+  /* ── Elevation / Shadow (dark-tuned) ───────────────────── */
+  --shadow-1: 0 1px 4px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.15);
+  --shadow-2: 0 4px 16px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
+  --shadow-sheet: 0 -8px 32px rgba(0,0,0,0.4);
+  --shadow-glow: 0 0 0 3px rgba(196,168,130,0.18); /* focus ring */
+
+  /* warm accent border for cards (the signature “gold hairline”) */
+  --card-hairline: 1px solid rgba(196,168,130,0.14);
+  --card-hairline-strong: 1px solid rgba(196,168,130,0.28);
+
+  /* sheet frosted glass */
+  --sheet-glass-bg: rgba(36,36,36,0.78);
+  --sheet-glass-blur: blur(20px) saturate(140%);
+
+  /* ── Motion ────────────────────────────────────────────── */
+  --ease-out:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);  /* iOS sheet curve */
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 400ms;
+}
+
+/* ── LIGHT MODE override ─────────────────────────────────── */
+:root[data-theme="light"],
+.light {
+  --bg:           var(--dh-cream-50);
+  --bg-elevated:  var(--dh-cream-0);
+  --surface:      var(--dh-cream-0);
+  --surface-2:    var(--dh-cream-50);
+  --border:       var(--dh-gold-50);
+  --divider:      var(--dh-cream-100);
+  --fg:           var(--dh-charcoal-700);
+  --fg-muted:     var(--dh-text-muted-light);
+  --accent:       var(--dh-gold-700);
+  --accent-hover: var(--dh-gold-800);
+  --accent-ink:   #ffffff;
+
+  --shadow-1: 0 1px 4px rgba(58, 42, 24, 0.06), 0 2px 8px rgba(58, 42, 24, 0.04);
+  --shadow-2: 0 4px 16px rgba(58, 42, 24, 0.08), 0 2px 8px rgba(58, 42, 24, 0.04);
+  --shadow-sheet: 0 -8px 32px rgba(58, 42, 24, 0.12);
+
+  --card-hairline: 1px solid rgba(139,111,71,0.14);
+  --card-hairline-strong: 1px solid rgba(139,111,71,0.28);
+
+  --sheet-glass-bg: rgba(255,255,255,0.78);
+}
+
+/* ============================================================
+   Type styles — semantic
+   ============================================================ */
+.dh-display {
+  font-family: var(--font-sans);
+  font-size: var(--fs-40);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  color: var(--fg);
+}
+.dh-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-28);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.dh-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-20);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.dh-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--fg);
+}
+.dh-body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-15);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-base);
+  color: var(--fg);
+}
+.dh-body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-base);
+  color: var(--fg);
+}
+.dh-caption {
+  font-family: var(--font-sans);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-base);
+  color: var(--fg-muted);
+}
+.dh-overline {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-muted);
+}
+.dh-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-14);
+  letter-spacing: var(--tracking-mono);
+  color: var(--fg);
+}
+.dh-quote {
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  font-style: italic;
+  line-height: var(--lh-loose);
+  color: var(--fg-muted);
+}

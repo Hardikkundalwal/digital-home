@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task list</title>
+<link rel="stylesheet" href="_base.css">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+  body { padding: 32px; }
+  .task-list { display: flex; flex-direction: column; gap: 8px; }
+  .task-item {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface);
+    border: var(--card-hairline);
+    border-radius: var(--r-sm);
+    padding: 10px 14px;
+  }
+  .task-item.done { opacity: 0.5; }
+  .task-item.done .task-text { text-decoration: line-through; }
+  .task-toggle {
+    background: none; border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    display:inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--accent);
+    flex-shrink: 0;
+  }
+  .task-toggle.checked { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .task-text { flex: 1; font-size: 14px; color: var(--fg); }
+  .task-delete { background: none; border: none; color: var(--fg-muted); cursor: pointer; padding: 4px; opacity: 0.5; }
+  i { width: 14px; height: 14px; stroke-width: 2; }
+</style>
+</head>
+<body>
+<div class="task-list">
+  <div class="task-item">
+    <button class="task-toggle"></button>
+    <span class="task-text">Read chapter 4 of Computer Networks</span>
+    <button class="task-delete"><i data-lucide="x"></i></button>
+  </div>
+  <div class="task-item">
+    <button class="task-toggle"></button>
+    <span class="task-text">Reply to Jenna about Friday plans</span>
+    <button class="task-delete"><i data-lucide="x"></i></button>
+  </div>
+  <div class="task-item done">
+    <button class="task-toggle checked"><i data-lucide="check"></i></button>
+    <span class="task-text">Buy oat milk on the way home</span>
+    <button class="task-delete"><i data-lucide="x"></i></button>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body>
+</html>

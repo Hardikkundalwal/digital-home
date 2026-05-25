@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wordmark</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 24px; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .panel {
+    border-radius: var(--r-lg);
+    padding: 26px 30px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center;
+  }
+  .dark { background: #1a1a1a; }
+  .light { background: #f5efe6; }
+  .panel img { height: 56px; }
+</style>
+</head>
+<body>
+<div class="stack">
+  <div class="panel dark"><img src="../assets/wordmark-dark.svg" alt="Wordmark dark" /></div>
+  <div class="panel light"><img src="../assets/wordmark-light.svg" alt="Wordmark light" /></div>
+</div>
+</body>
+</html>

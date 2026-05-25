@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inputs & toggle</title>
+<link rel="stylesheet" href="_base.css">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+  body { padding: 32px; }
+  .group { display: flex; flex-direction: column; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .lab { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .input {
+    width: 100%; padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--surface-2);
+    color: var(--fg);
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+  }
+  .input.focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(196,168,130,0.18);
+  }
+
+  .row { display: flex; gap: 16px; align-items: center; }
+  .task-form { display:flex; gap: 8px; }
+  .task-form button {
+    padding: 0.6rem 1.1rem; background: var(--accent); color: var(--accent-ink);
+    border: none; border-radius: var(--r-sm); font-weight: 600; cursor: pointer;
+  }
+
+  .toggle {
+    position: relative; display: inline-block;
+    width: 44px; height: 24px;
+  }
+  .toggle input { display: none; }
+  .toggle-slider {
+    position: absolute; inset: 0;
+    background: var(--border); border-radius: 22px;
+    transition: background 0.2s ease;
+  }
+  .toggle-slider::before {
+    content: ''; position: absolute;
+    left: 3px; top: 3px;
+    width: 18px; height: 18px;
+    background: #fff; border-radius: 50%;
+    transition: transform 0.2s ease;
+  }
+  .toggle input:checked + .toggle-slider { background: var(--accent); }
+  .toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+</style>
+</head>
+<body>
+<div class="group">
+  <div class="field">
+    <span class="lab">Default</span>
+    <input class="input" placeholder="Add a task…" />
+  </div>
+  <div class="field">
+    <span class="lab">Focused</span>
+    <input class="input focus" value="Read chapter 4" />
+  </div>
+  <div class="field">
+    <span class="lab">With submit</span>
+    <form class="task-form" onsubmit="event.preventDefault();">
+      <input class="input" placeholder="Write a note…" />
+      <button type="submit">Add</button>
+    </form>
+  </div>
+  <div class="row">
+    <span class="lab" style="min-width: 110px;">Toggle</span>
+    <label class="toggle"><input type="checkbox" /><span class="toggle-slider"></span></label>
+    <label class="toggle"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+    <span style="font-size:13px; color: var(--fg-muted);">Binaural beats</span>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body>
+</html>

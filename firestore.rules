@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Personal user data: owner only
+    match /users/{userId}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Shared rooms
+    match /sharedRooms/{roomCode} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow write: if request.auth != null && resource.data.createdBy == request.auth.uid;
+
+      match /members/{userId} {
+        allow read: if request.auth != null;
+        allow create: if request.auth.uid == userId;
+        allow delete: if request.auth.uid == userId ||
+          get(/databases/$(database)/documents/sharedRooms/$(roomCode)).data.createdBy == request.auth.uid;
+      }
+
+      match /lists/{listId}/{document=**} {
+        allow read, write: if request.auth != null &&
+          exists(/databases/$(database)/documents/sharedRooms/$(roomCode)/members/$(request.auth.uid));
+      }
+
+      // Ephemeral presence: members only, own doc only
+      match /presence/{userId} {
+        allow read: if request.auth != null && (
+          roomCode in ['my-room', 'study', 'work'] ||
+          exists(/databases/$(database)/documents/sharedRooms/$(roomCode)/members/$(request.auth.uid))
+        );
+        allow write: if request.auth.uid == userId && (
+          roomCode in ['my-room', 'study', 'work'] ||
+          exists(/databases/$(database)/documents/sharedRooms/$(roomCode)/members/$(request.auth.uid))
+        );
+        allow delete: if request.auth.uid == userId;
+      }
+    }
+
+    // Deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

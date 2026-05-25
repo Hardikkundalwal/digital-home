@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Home — UI Kit</title>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="DoorScreen.jsx"></script>
+<script type="text/babel" src="panels.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="RoomScreen.jsx"></script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: #0d0d0d;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* iPhone 15 Pro-ish bezel */
+.phone {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  flex-shrink: 0;
+  border-radius: 52px;
+  background: #111;
+  box-shadow:
+    0 0 0 10px #222,
+    0 0 0 11px #151515,
+    0 50px 100px rgba(0,0,0,0.9),
+    inset 0 0 0 1px rgba(255,255,255,0.07);
+  overflow: hidden;
+}
+
+/* Dynamic Island */
+.island {
+  position: absolute;
+  top: 12px; left: 50%;
+  transform: translateX(-50%);
+  width: 122px; height: 36px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 300;
+  pointer-events: none;
+}
+
+/* Status bar */
+.status {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 54px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 18px 28px 0;
+  z-index: 299; pointer-events: none;
+}
+.status-time { font-size: 15px; font-weight: 600; color: #f5f0e8; letter-spacing: -0.3px; }
+.status-right { display: flex; align-items: center; gap: 6px; }
+.status-dot { width: 16px; height: 11px; border-radius: 2px; border: 1.5px solid #f5f0e8; position: relative; }
+.status-dot::after { content: ''; position: absolute; left: 2px; top: 2px; right: 2px; bottom: 2px; background: #f5f0e8; border-radius: 1px; }
+
+/* App root */
+.app-root {
+  position: absolute;
+  inset: 0;
+  top: 54px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+/* Sidebar info */
+.info-panel {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 8px 0;
+}
+.info-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #555; margin-bottom: 6px; }
+.info-row {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: #888; cursor: pointer;
+  padding: 8px 12px; border-radius: 8px;
+  border: 1px solid #1e1e1e; background: #141414;
+  transition: border-color 0.15s, color 0.15s;
+}
+.info-row:hover { border-color: #333; color: #bbb; }
+.info-row.active { border-color: rgba(196,168,130,0.4); color: #c4a882; background: rgba(196,168,130,0.06); }
+.info-dot { width: 8px; height: 8px; border-radius: 50%; background: #c4a882; flex-shrink: 0; }
+.info-dot.sage { background: #7a9e6b; }
+.info-dot.slate { background: #6b8f9e; }
+
+@keyframes glowPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+@keyframes wv { 0%,100%{transform:scaleY(.5)} 50%{transform:scaleY(1)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <!-- Sidebar nav -->
+  <div class="info-panel" id="nav-panel">
+    <div>
+      <div class="info-title">Screens</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="info-row active" id="nav-door" onclick="navigate('door')">
+          <span class="info-dot"></span> Door (auth)
+        </div>
+        <div class="info-row" id="nav-home" onclick="navigate('home')">
+          <span class="info-dot"></span> Home
+        </div>
+        <div class="info-row" id="nav-my-room" onclick="navigate('room/my-room')">
+          <span class="info-dot"></span> My Room
+        </div>
+        <div class="info-row" id="nav-study" onclick="navigate('room/study')">
+          <span class="info-dot sage"></span> Study
+        </div>
+        <div class="info-row" id="nav-work" onclick="navigate('room/work')">
+          <span class="info-dot slate"></span> Work
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info-title">Tip</div>
+      <p style="font-size:12px;color:#555;line-height:1.6;">
+        Tap room cards to enter a room. Inside, tap any furniture label to slide up a panel. Swipe-down handle to dismiss.
+      </p>
+    </div>
+    <div>
+      <div class="info-title">Stack</div>
+      <p style="font-size:12px;color:#555;line-height:1.6;">
+        React · Lucide · System UI<br>
+        No build step. Open index.html.
+      </p>
+    </div>
+  </div>
+
+  <!-- Phone -->
+  <div class="phone">
+    <div class="island"></div>
+    <div class="status">
+      <span class="status-time">9:41</span>
+      <div class="status-right">
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="none">
+          <rect x="0" y="3" width="3" height="8" rx="0.5" fill="#f5f0e8"/>
+          <rect x="4.5" y="2" width="3" height="9" rx="0.5" fill="#f5f0e8"/>
+          <rect x="9" y="0" width="3" height="11" rx="0.5" fill="#f5f0e8"/>
+          <rect x="13.5" y="0" width="2.5" height="11" rx="0.5" fill="#f5f0e8" opacity="0.3"/>
+        </svg>
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="#f5f0e8" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.5 2.5C9.7 2.5 11.7 3.4 13.2 4.8L14.3 3.7C12.5 2 10.1 1 7.5 1C4.9 1 2.5 2 0.7 3.7L1.8 4.8C3.3 3.4 5.3 2.5 7.5 2.5Z" opacity="0.4"/>
+          <path d="M7.5 5C9 5 10.4 5.6 11.4 6.5L12.5 5.4C11.2 4.2 9.4 3.5 7.5 3.5C5.6 3.5 3.8 4.2 2.5 5.4L3.6 6.5C4.6 5.6 6 5 7.5 5Z" opacity="0.7"/>
+          <circle cx="7.5" cy="9" r="1.5"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="#f5f0e8" stroke-opacity="0.35"/>
+          <rect x="2" y="2" width="16" height="8" rx="2" fill="#f5f0e8"/>
+          <path d="M23 4.5V7.5C23.8 7.2 24.5 6.5 24.5 6C24.5 5.5 23.8 4.8 23 4.5Z" fill="#f5f0e8" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+    <div class="app-root" id="root"></div>
+  </div>
+</div>
+
+<script type="text/babel">
+const { useState, useCallback } = React;
+
+let externalNavigate = null;
+
+function App() {
+  const [screen, setScreen] = useState('door');
+  const [userName, setUserName] = useState('Hadron');
+
+  const navigate = useCallback((to) => {
+    setScreen(to);
+    // sync sidebar
+    document.querySelectorAll('.info-row').forEach(el => el.classList.remove('active'));
+    const id = 'nav-' + (to.startsWith('room/') ? to.replace('room/', '') : to);
+    document.getElementById(id)?.classList.add('active');
+  }, []);
+
+  externalNavigate = navigate;
+
+  if (screen === 'door') {
+    return <DoorScreen onLogin={(name) => { setUserName(name); navigate('home'); }} />;
+  }
+  if (screen === 'home') {
+    return (
+      <HomeScreen
+        name={userName}
+        onNavigate={navigate}
+        onLogout={() => navigate('door')}
+      />
+    );
+  }
+  if (screen.startsWith('room/')) {
+    return <RoomScreen room={screen.replace('room/', '')} onBack={() => navigate('home')} />;
+  }
+  return null;
+}
+
+// expose navigate for sidebar onclick
+window.navigate = (to) => externalNavigate?.(to);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

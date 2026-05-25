@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Logo mark</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 24px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  .panel {
+    border-radius: var(--r-lg);
+    padding: 24px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+    min-height: 140px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dark { background: #1a1a1a; }
+  .light { background: #f5efe6; }
+  .label {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .label-d { color: #8a7f6e; }
+  .label-l { color: #8b6f47; }
+  img { width: 84px; height: 84px; display: block; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="panel dark">
+    <img src="../assets/logo-mark-dark.svg" alt="Dark mark" />
+    <span class="label label-d">on charcoal</span>
+  </div>
+  <div class="panel light">
+    <img src="../assets/logo-mark-light.svg" alt="Light mark" />
+    <span class="label label-l">on cream</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72" width="360" height="72">
+  <g fill="none" stroke="#8b6f47" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 38 L36 18 L58 38 L58 60 L14 60 Z"></path>
+    <path d="M31 60 L31 46 L41 46 L41 60" stroke-width="3"></path>
+  </g>
+  <circle cx="36" cy="52" r="1.6" fill="#8b6f47"></circle>
+  <text x="80" y="46" font-family="-apple-system, system-ui, sans-serif" font-size="26" font-weight="600" fill="#2b2b2b" letter-spacing="-0.4">Digital</text>
+  <text x="184" y="46" font-family="-apple-system, system-ui, sans-serif" font-size="26" font-weight="400" fill="#8b6f47" letter-spacing="-0.4">Home</text>
+</svg>

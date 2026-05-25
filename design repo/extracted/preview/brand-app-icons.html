@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>App icons</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 24px; }
+  .row { display: flex; gap: 24px; align-items: center; justify-content: center; }
+  .stack { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .icon-shadow { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4)); }
+  .label {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--fg-muted);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .icon-lg { width: 132px; height: 132px; display: block; border-radius: 28px; }
+  .icon-md { width: 64px; height: 64px; display: block; border-radius: 14px; }
+  .icon-sm { width: 32px; height: 32px; display: block; border-radius: 7px; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="stack">
+    <img class="icon-shadow icon-lg" src="../assets/app-icon-dark.svg" alt="App icon 512" />
+    <span class="label">512 · install</span>
+  </div>
+  <div class="stack">
+    <img class="icon-shadow icon-md" src="../assets/app-icon-dark.svg" alt="App icon 128" />
+    <span class="label">128 · home screen</span>
+  </div>
+  <div class="stack">
+    <img class="icon-shadow icon-sm" src="../assets/favicon.svg" alt="Favicon" />
+    <span class="label">32 · favicon</span>
+  </div>
+  <div class="stack">
+    <img class="icon-shadow icon-lg" src="../assets/app-icon-light.svg" alt="App icon light" />
+    <span class="label">512 · light</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weather + greeting</title>
+<link rel="stylesheet" href="_base.css">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+  body { padding: 32px; }
+  .group { display: flex; flex-direction: column; gap: 12px; }
+  .greeting {
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .home-date { color: var(--fg-muted); font-size: 13px; }
+
+  .widgets { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .weather-widget {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface);
+    border: var(--card-hairline);
+    border-radius: var(--r-sm);
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .weather-widget .icon { color: var(--accent); display: inline-flex; }
+  .weather-widget .temp { font-weight: 600; }
+  .weather-widget .label { color: var(--fg-muted); font-size: 12px; }
+
+  .daily-quote {
+    font-size: 12px;
+    color: var(--fg-muted);
+    font-style: italic;
+    line-height: 1.5;
+    flex: 1; min-width: 200px;
+  }
+  .quote-author { font-style: normal; margin-top: 2px; font-size: 11px; }
+  i { width: 16px; height: 16px; stroke-width: 1.75; }
+</style>
+</head>
+<body>
+<div class="group">
+  <p class="greeting">Welcome back, Hadron ✨</p>
+  <p class="home-date">Friday, May 16</p>
+  <div class="widgets">
+    <div class="weather-widget">
+      <span class="icon"><i data-lucide="cloud-sun"></i></span>
+      <span class="temp">18°C</span>
+      <span class="label">Partly cloudy</span>
+    </div>
+    <div class="daily-quote">
+      <p>"The home should be the treasure chest of living."</p>
+      <p class="quote-author">— Le Corbusier</p>
+    </div>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body>
+</html>

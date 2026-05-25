@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Radio</title>
+<link rel="stylesheet" href="_base.css">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+  body { padding: 24px; }
+  .panel {
+    background: var(--surface);
+    border: var(--card-hairline);
+    border-radius: var(--r-lg);
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .now {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .play-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--accent);
+    border: none; display:flex; align-items:center; justify-content:center;
+    color: var(--accent-ink); cursor: pointer; flex-shrink: 0;
+  }
+  .meta { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+  .overline { font-size: 11px; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .name { font-size: 15px; font-weight: 600; color: var(--fg); }
+  .waves { display: flex; align-items: end; gap: 3px; height: 22px; }
+  .waves span { display:block; width: 3px; background: var(--accent); border-radius: 2px; animation: wv 1s ease-in-out infinite; }
+  .waves span:nth-child(1){ height: 35%; animation-delay: 0s; }
+  .waves span:nth-child(2){ height: 70%; animation-delay: 0.15s; }
+  .waves span:nth-child(3){ height: 100%; animation-delay: 0.3s; }
+  .waves span:nth-child(4){ height: 60%; animation-delay: 0.45s; }
+  .waves span:nth-child(5){ height: 80%; animation-delay: 0.2s; }
+  @keyframes wv { 0%,100% { transform: scaleY(0.5);} 50% { transform: scaleY(1);} }
+
+  .stations { display: flex; flex-direction: column; gap: 6px; }
+  .station {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    font-size: 13px;
+  }
+  .station.active { border-color: var(--accent); }
+  .station-name { color: var(--fg); font-weight: 500; }
+  .station-genre { color: var(--fg-muted); font-size: 12px; }
+  i { width: 18px; height: 18px; stroke-width: 1.75; }
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="now">
+    <button class="play-btn"><i data-lucide="pause"></i></button>
+    <div class="meta">
+      <span class="overline">Tuned in</span>
+      <span class="name">Lo-Fi Girl</span>
+    </div>
+    <div class="waves"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="stations">
+    <div class="station active"><span class="station-name">Lo-Fi Girl</span><span class="station-genre">Pop</span></div>
+    <div class="station"><span class="station-name">Jazz24</span><span class="station-genre">Jazz</span></div>
+    <div class="station"><span class="station-name">Classical KUSC</span><span class="station-genre">Classical</span></div>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body>
+</html>

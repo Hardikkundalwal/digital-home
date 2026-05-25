@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Radii</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 32px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  .radius {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .box {
+    width: 100%;
+    aspect-ratio: 1.1 / 1;
+    background: var(--surface);
+    border: var(--card-hairline-strong);
+  }
+  .name { font-family: var(--font-mono); font-size: 12px; color: var(--fg); }
+  .desc { font-size: 11px; color: var(--fg-muted); line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="radius">
+    <div class="box" style="border-radius: 8px;"></div>
+    <span class="name">8 px</span>
+    <span class="desc">Inputs, buttons, chips</span>
+  </div>
+  <div class="radius">
+    <div class="box" style="border-radius: 12px;"></div>
+    <span class="name">12 px</span>
+    <span class="desc">Small surfaces, swatches</span>
+  </div>
+  <div class="radius">
+    <div class="box" style="border-radius: 16px;"></div>
+    <span class="name">16 px</span>
+    <span class="desc">Cards · the default</span>
+  </div>
+  <div class="radius">
+    <div class="box" style="border-radius: 24px 24px 0 0;"></div>
+    <span class="name">24 px top</span>
+    <span class="desc">Bottom sheet</span>
+  </div>
+  <div class="radius">
+    <div class="box" style="border-radius: 999px;"></div>
+    <span class="name">Pill</span>
+    <span class="desc">Hint chips, pill buttons</span>
+  </div>
+</div>
+</body>
+</html>

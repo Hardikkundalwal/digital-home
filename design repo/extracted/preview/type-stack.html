@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Type stack & rules</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 32px; }
+  .panel {
+    background: var(--surface);
+    border: var(--card-hairline);
+    border-radius: var(--r-lg);
+    padding: 22px 24px;
+  }
+  .stack {
+    font-size: 14px;
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  .stack code {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+  .rule {
+    padding: 14px;
+    border-radius: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+  .rule strong { display: block; font-size: 13px; margin-bottom: 4px; color: var(--accent); }
+  .rule span { font-size: 12px; color: var(--fg-muted); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="stack">
+    <span class="dh-overline" style="display:block; margin-bottom:8px;">Font stack</span>
+    <code>-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif</code>
+  </div>
+  <div class="rules">
+    <div class="rule">
+      <strong>System UI only</strong>
+      <span>No web fonts. Stays native, fast & familiar on every device.</span>
+    </div>
+    <div class="rule">
+      <strong>Tight display</strong>
+      <span>Tracking -0.02em on display, -0.01em on headings.</span>
+    </div>
+    <div class="rule">
+      <strong>Tabular numbers</strong>
+      <span>Pomodoro, codes, exam countdowns use font-variant-numeric: tabular-nums.</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

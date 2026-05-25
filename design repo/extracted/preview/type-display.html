@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Type scale</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 32px; }
+  .row-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .row-item:last-child { border-bottom: none; }
+  .label { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="row-item">
+    <span class="label">Display</span>
+    <span class="dh-display">Welcome home.</span>
+  </div>
+  <div class="row-item">
+    <span class="label">H1</span>
+    <span class="dh-h1">Hadron's Home</span>
+  </div>
+  <div class="row-item">
+    <span class="label">H2</span>
+    <span class="dh-h2">Shared Rooms</span>
+  </div>
+  <div class="row-item">
+    <span class="label">H3</span>
+    <span class="dh-h3">Tasks</span>
+  </div>
+</div>
+</body>
+</html>
