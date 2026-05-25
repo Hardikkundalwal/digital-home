@@ -1,6 +1,8 @@
 # 🏡 Digital Home UI/UX (V2 Upgrade)
 
-> A premium, Apple-inspired, and cozy personal productivity PWA with interactive 3D rooms. 
+> A personal productivity PWA built around the metaphor of a house—where each room represents a different life context. Study, work, relax, and collaborate, all in one place that feels like yours. 
+> 
+> *Built for personal use first. Designed to feel like home.*
 
 [![Live Demo](https://img.shields.io/badge/Demo-Live%20Web%20App-gold?style=for-the-badge&logo=firebase&logoColor=white)](https://digital-home-cc21b.web.app)
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev)
@@ -9,11 +11,16 @@
 
 ---
 
-## 📖 Project Overview & Purpose
+## ✨ What It Is
 
-**Digital Home** is a cozy, centralized digital space designed to act as your personal productivity center. Each 3D room represents a distinct life context—**Study**, **Work**, and **My Room (Personal)**. 
+Digital Home is an immersive web application where your life is organized into interactive rooms:
 
-Rather than navigating standard corporate dashboards, users interact with an immersive 3D space by clicking on different pieces of furniture (like the desk, clock, or couch) to slides up elegant, contextual productivity panels. It is designed both for individual focus and **household collaboration** via real-time shared multiplayer rooms.
+*   **📚 Study Room** — Focus mode, exam countdowns, radio, notes, and lofi loops.
+*   **💼 Work Room** — Tasks, projects, quick links, and productivity focus tools.
+*   **🛋️ My Room** — Personal to-dos, journal, avatar creator, and your private space.
+*   **👥 Shared Rooms** — Collaborate with household members in real-time.
+
+Each room has interactive furniture you click to open panels—a desk opens your tasks, a bookshelf opens your notes, and a radio plays internet stations. The UI is a beautiful 3D space built with React Three Fiber, designed to feel completely immersive without being overwhelming.
 
 ---
 
@@ -29,34 +36,24 @@ Digital Home is heavily inspired by Apple's signature hardware and software aest
 
 ---
 
-## 🚀 Outstanding Features
+## ⚡ Key Design Decisions
 
-### 🎮 1. WebGL Interactive 3D Rooms
-Experience full spatial immersion through multiple dedicated scenes:
-*   **Study Room**: An interactive school classroom equipped with a customizable floating avatar and active zones.
-*   **Personal Room & Work Space**: Photorealistic cozy living space configured in warm styling for My Room, and cool, modern office styling for Work Room.
-*   **Orbit Controls & Camera Focus**: Fluid pan, zoom, and damping, alongside cameras that dynamically focus and zoom in on clicked furniture pieces.
-
-### 👥 2. Real-Time Multiplayer Presence & Sync
-*   **Cooperative Shared Rooms**: Create or join multiplayer sync rooms with invite codes.
-*   **Synchronized State Panels**: Real-time synced shopping/task lists, shared notes, and synchronized audio players.
-*   **Multiplayer Avatars**: See customizable 3D avatars representing online users walking and standing in the room in real-time!
-
-### ⏳ 3. Cozy Productivity Suite
-*   **Binaural Beats & Soundscapes**: Control binaural beats and ambient cozy loops (Rain, Ocean waves, crackling Fireplace, Forest rustles).
-*   **Pomodoro Timer**: Classic Pomodoro timer (`Focus` and `Break` periods) integrated directly with lofi beats.
-*   **Subjects & Folders**: Beautiful bookshelf organization for organizing school/work folders.
-*   **Exams Tracker & TV Trivia**: Manage calendar deadlines and play interactive TV-stand trivia challenges.
-
----
-
-## ⚡ Key Architectural Decisions
-
-*   **Slide Sheet Modals (Non-Disruptive Flow)**: Clicking on furniture opens a smooth glassmorphic bottom sheet panel instead of navigating away to a new page, maintaining complete spatial immersion.
+*   **Slide Sheet Modals (Non-Disruptive Flow)**: Clicking on furniture opens a smooth glassmorphic bottom sheet panel instead of navigating away to a new page, keeping you fully in the room.
 *   **Camera Lerp & Zoom Target**: The 3D camera smoothly lerps directly toward clicked furniture to look at it up-close, and gracefully lerps back to the room view when the panel is dismissed.
 *   **Three.js Module Deduplication**: Enabled built-in Vite `dedupe` systems inside `vite.config.js` to solve global cache conflicts, resolving any rendering conflicts between React Three Fiber and Spline.
 *   **Memory-Optimized Mesh Cloning**: Custom GLTF models utilize Drei's `<Clone>` wrapper to guarantee separate heap-allocation, eliminating race conditions on shared object graphs.
 *   **Adaptive Viewport FOV**: Fully optimized for mobile screens. The camera dynamically adjusts its Field of View (FOV) to `75` on mobile screens for a wider isometric view, and `50` on desktop monitors for perfect room framing.
+*   **Avatar Idle Bobbing**: An animated avatar sits at the desk in every room with a gentle, breathing idle bob animation.
+
+---
+
+## 🔌 Free API Integrations
+
+No private API keys are needed—all integrated systems are completely free and open out-of-the-box:
+
+*   **Radio Browser**: Drives the internet radio tuner in Study/Work rooms.
+*   **Open-Meteo**: Syncs your local weather to dynamically affect room lighting and window views.
+*   **Quotable**: Powers daily motivational quotes inside the home panel.
 
 ---
 
@@ -98,11 +95,11 @@ Experience full spatial immersion through multiple dedicated scenes:
 
 ### Prerequisites
 - Node.js (v18+)
-- npm or yarn
+- Firebase CLI (`npm install -g firebase-tools`)
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/digital-home.git
+git clone https://github.com/Hardikkundalwal/digital-home.git
 cd digital-home
 ```
 
@@ -125,9 +122,25 @@ npm run dev
 
 ### 5. Build for production & Deploy
 ```bash
-npm run build
-npx firebase deploy --only hosting
+npm run deploy
+# (Builds the app and deploys to Firebase Hosting in one command)
 ```
+
+---
+
+## 🗺️ Roadmap
+
+*   `[x]` **V0** — Single page task list with Firestore sync
+*   `[x]` **3D Rooms** with clickable furniture
+*   `[x]` **Firebase Auth** (login / stay logged in)
+*   `[x]` **Study Room** with radio panel
+*   `[x]` **Exam countdown** widget
+*   `[x]` **Weather-reactive** room windows
+*   `[x]` **Shared rooms** with live avatar presence
+*   `[x]` **Mobile camera FOV** improvements
+*   `[x]` **Replace primitive furniture** with GLTF models
+*   `[ ]` **Remote capture** ("add this to my list" from anywhere)
+*   `[ ]` **Local AI assistant** via Ollama (planned)
 
 ---
 
